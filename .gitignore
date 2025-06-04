@@ -1,0 +1,368 @@
+# 面试助手系统 - Git 忽略文件
+
+# ================================
+# 敏感信息和配置文件
+# ================================
+
+# 环境配置文件（包含 API 密钥）
+.env
+.env.local
+.env.development
+.env.production
+
+# 实际使用的配置文件（由脚本生成）
+backend/.env
+desktop-tool/.env
+frontend/.env.local
+
+# API 密钥和凭证文件
+*.key
+*.pem
+*.p12
+*.pfx
+credentials.json
+config.json
+
+# ================================
+# Python 相关
+# ================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# ================================
+# Node.js / Next.js 相关
+# ================================
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Next.js
+.next/
+out/
+
+# Production build
+build/
+dist/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+*.lcov
+
+# nyc test coverage
+.nyc_output
+
+# Grunt intermediate storage
+.grunt
+
+# Bower dependency directory
+bower_components
+
+# node-waf configuration
+.lock-wscript
+
+# Compiled binary addons
+build/Release
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# parcel-bundler cache
+.cache
+.parcel-cache
+
+# Stores VSCode versions used for testing VSCode extensions
+.vscode-test
+
+# yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# ================================
+# 音频和媒体文件
+# ================================
+
+# 临时音频文件
+temp_audio_*.wav
+temp_audio_*.mp3
+temp_audio_*.m4a
+*.tmp.wav
+*.tmp.mp3
+
+# 录音文件
+recordings/
+audio_cache/
+*.recorded
+
+# Whisper 模型缓存
+.cache/whisper/
+
+# ================================
+# 日志文件
+# ================================
+
+# 应用日志
+*.log
+logs/
+log/
+
+# 系统日志
+*.out
+*.err
+
+# ================================
+# 数据库文件
+# ================================
+
+# SQLite
+*.db
+*.sqlite
+*.sqlite3
+
+# 其他数据库
+*.mdb
+*.accdb
+
+# ================================
+# 临时文件和缓存
+# ================================
+
+# 操作系统生成的文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 临时文件
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# 缓存目录
+.cache/
+cache/
+tmp/
+temp/
+
+# ================================
+# IDE 和编辑器
+# ================================
+
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# PyCharm
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# ================================
+# 项目特定文件
+# ================================
+
+# 对话历史文件
+conversation_history.json
+chat_history.db
+
+# 用户上传的文件
+uploads/
+user_data/
+
+# 测试文件
+test_audio.wav
+test_recording.mp3
+
+# 备份文件
+*.bak
+*.backup
+backup/
+
+# 部署相关
+deploy/
+deployment/
+
+# 文档生成
+docs/_build/
+
+# ================================
+# 云服务和部署
+# ================================
+
+# Docker
+.dockerignore
+Dockerfile.local
+
+# Kubernetes
+*.yaml.local
+*.yml.local
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# ================================
+# 其他
+# ================================
+
+# 压缩文件
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# 证书文件
+*.crt
+*.cert
+
+# 本地配置覆盖
+local_config.py
+local_settings.py
