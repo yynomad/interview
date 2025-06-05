@@ -39,7 +39,7 @@ DEBUG=True
 
 # 服务器配置
 HOST=0.0.0.0
-PORT=5000
+PORT=5001
 
 # CORS 配置 - 开发环境允许本地访问
 CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001
@@ -127,7 +127,7 @@ def setup_desktop_config():
 ENVIRONMENT=development
 
 # 后端服务器配置
-BACKEND_URL=http://localhost:5000
+BACKEND_URL=http://localhost:5001
 
 # 音频配置
 SAMPLE_RATE=16000

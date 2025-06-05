@@ -158,14 +158,14 @@ LOG_LEVEL=DEBUG
 
 # 服务器配置
 HOST=0.0.0.0
-PORT=5000
+PORT=5001
 CORS_ORIGINS=http://localhost:3000
 ```
 
 #### 电脑端工具 (desktop-tool/.env)
 ```env
 # 服务器连接
-BACKEND_URL=http://localhost:5000
+BACKEND_URL=http://localhost:5001
 
 # 语音识别配置
 SPEECH_PROVIDER=local_whisper
@@ -277,12 +277,17 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 #### 4. 端口被占用
 ```bash
-# 检查端口占用
-lsof -i :5000  # 后端端口
+# 自动修复端口冲突
+./fix-port-conflicts.sh
+
+# 手动检查端口占用
+lsof -i :5001  # 后端端口
 lsof -i :3000  # 前端端口
 
 # 修改配置文件中的端口号
 ```
+
+**详细解决方案**: 参见 [PORT_CONFLICT_SOLUTION.md](PORT_CONFLICT_SOLUTION.md)
 
 #### 5. Git 和版本控制问题
 ```bash
