@@ -134,17 +134,7 @@ def check_config_files() -> Dict[str, int]:
             except Exception as e:
                 print(f"读取 {file_path} 失败: {e}")
     
-    # 检查前端配置
-    frontend_package_json = 'frontend/package.json'
-    if os.path.exists(frontend_package_json):
-        try:
-            import json
-            with open(frontend_package_json, 'r') as f:
-                data = json.load(f)
-                # Next.js 默认端口是 3000
-                ports[frontend_package_json] = 3000
-        except Exception as e:
-            print(f"读取 {frontend_package_json} 失败: {e}")
+
     
     return ports
 
@@ -156,7 +146,7 @@ def fix_port_conflicts():
     config_ports = check_config_files()
     
     # 检查常用端口
-    common_ports = [3000, 5000, 5001, 8000, 8080]
+    common_ports = [5000, 5001, 8000, 8080]
     
     print("\n📋 端口使用情况:")
     print("-" * 50)
@@ -195,8 +185,8 @@ def fix_port_conflicts():
                 print(f"  命令: {process_info['command']}")
                 
                 # 检查是否是我们自己的服务
-                if any(keyword in process_info['command'].lower() 
-                       for keyword in ['python', 'node', 'npm', 'flask', 'next']):
+                if any(keyword in process_info['command'].lower()
+                       for keyword in ['python', 'flask']):
                     
                     choice = input(f"是否终止此进程？(y/n) [默认: n]: ").strip().lower()
                     if choice in ['y', 'yes', '是']:
@@ -210,12 +200,9 @@ def fix_port_conflicts():
     # 建议可用端口
     print(f"\n💡 建议的可用端口:")
     backend_port = find_available_port(5000)
-    frontend_port = find_available_port(3000)
-    
+
     if backend_port:
         print(f"  后端: {backend_port}")
-    if frontend_port:
-        print(f"  前端: {frontend_port}")
     
     # 提供修复建议
     print(f"\n🔧 修复建议:")
@@ -252,7 +239,6 @@ def show_port_commands():
     
     print("\n# 环境变量方式启动")
     print("PORT=5001 python backend/app.py")
-    print("PORT=3001 npm run dev")
 
 def main():
     """主函数"""

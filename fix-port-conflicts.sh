@@ -89,20 +89,7 @@ fix_port_conflicts() {
         print_success "端口 5001 可用"
     fi
     
-    # 检查前端端口 3000
-    if check_port 3000; then
-        print_warning "端口 3000 被占用"
-        echo "占用进程:"
-        get_port_process 3000
-        
-        read -p "是否终止占用端口 3000 的进程？(y/n) [默认: n]: " -n 1 -r
-        echo
-        if [[ $REPLY =~ ^[Yy]$ ]]; then
-            kill_port_process 3000
-        fi
-    else
-        print_success "端口 3000 可用"
-    fi
+
     
     # 检查 macOS 控制中心占用的端口 5000
     if check_port 5000; then
@@ -150,11 +137,9 @@ provide_solutions() {
     print_info "解决方案:"
     echo "1. 🔄 使用不同端口:"
     echo "   export PORT=5001 && python backend/app.py"
-    echo "   export PORT=3001 && npm run dev"
     echo ""
     echo "2. 🛑 终止冲突进程:"
     echo "   sudo lsof -ti :5001 | xargs kill -9"
-    echo "   sudo lsof -ti :3000 | xargs kill -9"
     echo ""
     echo "3. ⚙️  修改配置文件:"
     echo "   编辑 backend/.env 设置 PORT=5001"
@@ -182,11 +167,7 @@ auto_fix_config() {
         print_success "已更新 desktop-tool/.env 连接到端口 5001"
     fi
     
-    # 更新前端配置
-    if [ -f "frontend/.env.local" ]; then
-        sed -i '' 's|localhost:5000|localhost:5001|g' frontend/.env.local 2>/dev/null || true
-        print_success "已更新 frontend/.env.local 连接到端口 5001"
-    fi
+
 }
 
 # 测试端口连接
@@ -200,12 +181,7 @@ test_ports() {
         print_warning "后端端口 5001 无法连接（服务可能未启动）"
     fi
     
-    # 测试前端端口
-    if nc -z localhost 3000 2>/dev/null; then
-        print_success "前端端口 3000 可连接"
-    else
-        print_warning "前端端口 3000 无法连接（服务可能未启动）"
-    fi
+
 }
 
 # 主函数

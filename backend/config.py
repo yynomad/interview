@@ -23,7 +23,7 @@ class Config:
     PORT = int(os.getenv('PORT', 5001))
     
     # CORS 配置
-    CORS_ORIGINS = os.getenv('CORS_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000').split(',')
+    CORS_ORIGINS = os.getenv('CORS_ORIGINS', '*').split(',')
     
     # Gemini 模型配置
     GEMINI_MODEL = os.getenv('GEMINI_MODEL', 'gemini-pro')

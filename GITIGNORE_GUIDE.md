@@ -10,7 +10,6 @@
 .env.local
 backend/.env
 desktop-tool/.env
-frontend/.env.local
 ```
 
 **原因**: 这些文件包含 API 密钥、数据库密码等敏感信息，绝对不能提交到版本控制系统。
@@ -57,31 +56,9 @@ dist/
 
 **原因**: 这些是构建过程中生成的文件，不需要版本控制。
 
-## 🌐 Node.js / Next.js 文件
 
-### 依赖目录
-```
-node_modules/
-```
 
-**原因**: npm/yarn 依赖包体积巨大，通过 `package.json` 和 `package-lock.json` 管理。
 
-### 构建输出
-```
-.next/
-out/
-build/
-```
-
-**原因**: Next.js 构建输出文件，可以通过源代码重新生成。
-
-### 缓存文件
-```
-.cache/
-.eslintcache/
-```
-
-**原因**: 工具缓存文件，提高构建速度但不需要版本控制。
 
 ## 🎤 音频文件
 

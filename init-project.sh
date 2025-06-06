@@ -54,23 +54,7 @@ check_requirements() {
         exit 1
     fi
     
-    # 检查 Node.js
-    if check_command node; then
-        node_version=$(node --version)
-        print_success "Node.js: $node_version"
-    else
-        print_error "请安装 Node.js 16 或更高版本"
-        exit 1
-    fi
-    
-    # 检查 npm
-    if check_command npm; then
-        npm_version=$(npm --version)
-        print_success "npm: $npm_version"
-    else
-        print_error "请安装 npm"
-        exit 1
-    fi
+
     
     # 检查 Git
     if check_command git; then
@@ -115,17 +99,7 @@ setup_env_files() {
         print_info "desktop-tool/.env 已存在，跳过"
     fi
     
-    # 前端环境配置
-    if [ ! -f "frontend/.env.local" ]; then
-        if [ -f "frontend/.env.local.example" ]; then
-            cp frontend/.env.local.example frontend/.env.local
-            print_success "已创建 frontend/.env.local"
-        else
-            print_warning "未找到前端环境配置模板"
-        fi
-    else
-        print_info "frontend/.env.local 已存在，跳过"
-    fi
+
 }
 
 # 安装依赖
@@ -136,15 +110,6 @@ install_dependencies() {
     read -p "是否安装项目依赖？(y/n) [默认: y]: " -n 1 -r
     echo
     if [[ ! $REPLY =~ ^[Nn]$ ]]; then
-        # 安装前端依赖
-        if [ -d "frontend" ] && [ -f "frontend/package.json" ]; then
-            print_info "安装前端依赖..."
-            cd frontend
-            npm install
-            cd ..
-            print_success "前端依赖安装完成"
-        fi
-        
         # 询问是否安装 Python 依赖
         read -p "是否安装 Python 依赖？(y/n) [默认: y]: " -n 1 -r
         echo
@@ -246,7 +211,7 @@ show_next_steps() {
 # 主函数
 main() {
     # 检查是否在项目根目录
-    if [ ! -f "README.md" ] || [ ! -d "backend" ] || [ ! -d "frontend" ] || [ ! -d "desktop-tool" ]; then
+    if [ ! -f "README.md" ] || [ ! -d "backend" ] || [ ! -d "desktop-tool" ]; then
         print_error "请在项目根目录运行此脚本"
         exit 1
     fi

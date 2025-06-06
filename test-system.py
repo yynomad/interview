@@ -64,25 +64,7 @@ def test_question_api():
         print(f"❌ 问题接口测试失败: {str(e)}")
         return False
 
-def test_frontend():
-    """测试前端是否可访问"""
-    try:
-        print("🔍 测试前端连接...")
-        response = requests.get("http://localhost:3000", timeout=5)
-        
-        if response.status_code == 200:
-            print("✅ 前端服务正常")
-            return True
-        else:
-            print(f"❌ 前端服务异常，状态码: {response.status_code}")
-            return False
-            
-    except requests.exceptions.ConnectionError:
-        print("❌ 无法连接到前端服务，请确保前端正在运行")
-        return False
-    except Exception as e:
-        print(f"❌ 前端测试失败: {str(e)}")
-        return False
+
 
 def main():
     """主测试函数"""
@@ -91,7 +73,6 @@ def main():
     
     tests = [
         ("后端健康检查", test_backend_health),
-        ("前端连接测试", test_frontend),
         ("问题接口测试", test_question_api),
     ]
     
@@ -110,9 +91,9 @@ def main():
     if passed == total:
         print("🎉 所有测试通过！系统运行正常")
         print("\n📝 下一步:")
-        print("1. 打开浏览器访问 http://localhost:3000")
-        print("2. 运行电脑端工具: cd desktop-tool && python main.py")
-        print("3. 开始测试语音识别功能")
+        print("1. 运行电脑端工具: cd desktop-tool && python main.py")
+        print("2. 开始测试语音识别功能")
+        print("3. 查看后端日志获取 AI 回答建议")
     else:
         print("⚠️  部分测试失败，请检查相关服务")
         sys.exit(1)

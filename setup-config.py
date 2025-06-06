@@ -42,7 +42,7 @@ HOST=0.0.0.0
 PORT=5001
 
 # CORS 配置 - 开发环境允许本地访问
-CORS_ORIGINS=http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001
+CORS_ORIGINS=*
 
 # Gemini 模型配置
 GEMINI_MODEL=gemini-pro

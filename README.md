@@ -13,12 +13,7 @@
 ### 2. 后端服务器 (Flask)
 - 📥 接收问题文本
 - 🤖 调用 Gemini API 生成回答
-- 🔌 WebSocket 推送到前端
-
-### 3. Web 前端 (Next.js)
-- 💬 实时显示问答对话
-- 🎨 美观的聊天界面
-- 📜 自动滚动到最新消息
+- 🔌 WebSocket 实时通信
 
 ## 🚀 快速开始
 
@@ -68,14 +63,7 @@ pip install -r requirements.txt
 python app.py
 ```
 
-#### 3. 启动前端
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-#### 4. 运行电脑端工具
+#### 3. 运行电脑端工具
 ```bash
 cd desktop-tool
 pip install -r requirements.txt
@@ -97,7 +85,7 @@ python test-system.py
 1. 🎤 启动电脑端工具，开始监听麦克风
 2. 🗣️ 面试官说话时，系统自动识别并上传文本
 3. ⌨️ 按快捷键启用 AI 模式，系统会生成回答建议
-4. 💻 在 Web 界面查看实时对话和 AI 建议
+4. 💻 查看后端日志获取 AI 建议
 
 ## 🔧 环境配置说明
 
@@ -159,7 +147,7 @@ LOG_LEVEL=DEBUG
 # 服务器配置
 HOST=0.0.0.0
 PORT=5001
-CORS_ORIGINS=http://localhost:3000
+CORS_ORIGINS=*
 ```
 
 #### 电脑端工具 (desktop-tool/.env)
@@ -242,8 +230,6 @@ SAVE_AUDIO_FILES=True
 
 ### 软件要求
 - Python 3.8+
-- Node.js 16+
-- npm 或 yarn
 
 ### 硬件要求
 - 麦克风设备
@@ -282,7 +268,6 @@ pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 # 手动检查端口占用
 lsof -i :5001  # 后端端口
-lsof -i :3000  # 前端端口
 
 # 修改配置文件中的端口号
 ```
@@ -318,7 +303,6 @@ chmod +x switch-env.sh
 
 - [Gemini API 文档](https://ai.google.dev/)
 - [OpenAI Whisper](https://github.com/openai/whisper)
-- [Next.js 文档](https://nextjs.org/docs)
 - [Flask-SocketIO 文档](https://flask-socketio.readthedocs.io/)
 
 ## 📄 许可证
